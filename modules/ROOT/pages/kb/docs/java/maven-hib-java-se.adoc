@@ -1,4 +1,48 @@
-// 
+//<!doctype html>
+    }
+
+
+  function gameOver() {
+    state.running = false; centerMsg.style.display='grid';
+    titleEl.textContent = 'GAME OVER';
+    subtitleEl.textContent = `Score: ${state.score} — Tap RESTART to try again`;
+    startBtn.style.display='none'; restartBtn.style.display='inline-block';
+  }
+
+
+  // ===== UI wiring =====
+  startBtn.addEventListener('click', () => { start(); });
+  restartBtn.addEventListener('click', () => { start(); });
+
+
+  function start(){
+    reset(); centerMsg.style.display='none'; startBtn.style.display='inline-block'; restartBtn.style.display='none';
+    if (!state.running) { state.running = true; last = performance.now(); requestAnimationFrame(step); }
+    toast('Good luck!');
+  }
+
+
+  // Show start screen
+  centerMsg.style.display='grid';
+
+
+  // optional: auto-center mouse target to player to avoid NaNs on touch devices
+  mouse.x = player.x; mouse.y = player.y;
+
+
+  // Expose a basic API in console for tinkering
+  window._4kAction = { state, player, enemies, bullets, particles };
+  </script>
+</body>
+</html>
+
+
+
+I dropped a single-file HTML5 game on the canvas for you — a clean, fast top-down action shooter that scales crisply up to 4K, works in the browser (desktop & mobile), and includes on-screen controls, fullscreen, pause, dash, waves, score, and particles.
+
+Want tweaks? Tell me what vibe you’re going for (harder enemies, power-ups, sound effects, different colors, a background image, multiplayer, etc.) and I’ll upgrade it.
+
+ChatGPT can make mistakes. Check important i 
 //     Licensed to the Apache Software Foundation (ASF) under one
 //     or more contributor license agreements.  See the NOTICE file
 //     distributed with this work for additional information
